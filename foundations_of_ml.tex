@@ -73,21 +73,21 @@
 	The batch gradient descent uses all the examples on each iteration to compute the gradient. For a large set of examples, this can be computationally expensive and not used in practice. This also requires that the gradient is computed for every example before making one step of gradient descent. 
 	\\
 	${}\hspace{30pt} \text{Repeat until convergence;} $\\
-	$$ \Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	${}\hspace{50pt} \Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $
 	
 	\subsubsection{Stochastic Gradient Descent}
 	Stochastic gradient descent selects a sample at random from the examples and uses this to update the gradient. This has the advantage of being fast and requiring less memory but does not guarantee convergence to the optimal solution (even though an approximate solution is usually good enough in practise) after the update. Also, update is not smooth as the direction of descent is dependent on only one data which may be noisy. \\
 	${}\hspace{30pt} \text{Repeat until convergence;} $\\
 	${}\hspace{50pt} \text{for i : 1 to n;} $
 	
-	$$ \Theta = \Theta + \alpha\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	${}\hspace{60pt} \Theta = \Theta + \alpha\left(y_i - h_\theta(x^{(i)})\right)x_i^j $
 	
 	\subsubsection{Mini-batch Stochastic Gradient Descent}
 	A compromise between batch gradient descent and stochastic gradient descent is the mini-batch gradient descent. It uses a mini-batch of examples samples at random from the dataset  to update the parameters. This has the advantage of reducing the variance during update and therefor smoother. It also maximixes the usage of hardware and cpu vectorization for efficient computations. \\ \\
 	${}\hspace{30pt} \text{Repeat until convergence;} $\\
 	${}\hspace{50pt} \text{for k subset in n;} $
 	 
-	 $$ \Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	${}\hspace{60pt}\Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $
 	 	
 	\subsubsection{Analytical Method}
 	The analytical method performs a single computation using the data matrix. It the does not require to be performed iteratively and does not require a learning rate.
@@ -110,7 +110,7 @@
 	\begin{equation}\label{normal_eqn}
 	\Theta = \left(X^TX\right)^{-1}X^Ty
 	\end{equation}
-	\eqref{normal_eqn} is known as the normal equation and requires the inverse of $X^TX$ to be computed. $X^TX$ may not be invertible and can be expensive to compute depending on the size of the dataset. To avoid the invertibility problem, the pseudoinverse can be computed and we can manually remove correlated features (by computing correlation matrix) if the features are linearly dependent. Another approach is to add regularization. To regularize the model, the sum of squares of the parameters is added to the loss function. This has the effect of also reducing the size of values of the parameters if the regularization parameter $\lambda$ is set appropraitely.
+	\eqref{normal_eqn} is known as the \textbf{normal equation} and requires the inverse of $X^TX$ to be computed. $X^TX$ may not be invertible and can be expensive to compute depending on the size of the dataset. To avoid the invertibility problem, the pseudoinverse can be computed and we can manually remove correlated features (by computing correlation matrix) if the features are linearly dependent. Another approach is to add regularization. To regularize the model, the sum of squares of the parameters is added to the loss function. This has the effect of also reducing the size of values of the parameters if the \textbf{regularization parameter} $\lambda$ is set appropraitely.
 	
 	
 	\begin{equation}
@@ -122,5 +122,6 @@
 	The proof of these regularization is shown in a later chapter using the Maximum a posteriori extimation(MAP). $I$ is the identity matrix and $\left(X^TX + \lambda{I}\right)^{-1}$ always exist
 %	$\{(x^2+y^4)\}$ $\left\{\left(x^2+y^4\right)\right\}$
 	
+	\subsection{Maximum Likelihood Estimation}
 	
 \end{document}
