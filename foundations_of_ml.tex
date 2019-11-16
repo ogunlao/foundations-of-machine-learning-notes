@@ -15,13 +15,111 @@
 	\chapter{Supervised Learning}
 	\section{Regression Problem}
 	
-	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features. \\
+	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features, we can learn a function or hypothesis which maps the features $x_i$ to the target $y_i$ i.e $h : \mathbb{R}^d -> \mathbb{R}^c $ \\
+	
+	Given a supervised learning task, it is required to understand the given problem at hand to determine; \\
+	\begin{enumerate}
+		\item [a.] Data
+		\item [b.] Hypothesis or model or Hypothesis class e.g. Regression
+		\item [c.] Criteria (Loss, Cost)
+		\item[d.] Learning Algorithm
+	\end{enumerate}
+\begin{center}
+	\includegraphics[width=0.7\linewidth]{../placeholder}
+\end{center}
+	
+	\subsection{Hypothesis}
 	The hypothesis function is \\
 	\begin{equation}
 		h_{\theta}(X) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n
 		= \sum_{i=0}^{n}\theta_ix_i \qquad (x_0=1)
 	\end{equation}
+	where $\theta$s are parameters of the model and $\theta_0$ is referred to as the \textbf{bias/intercept term}. Since this model has parameters, and the goal is to find the best parameters for the data, this form of models are referred to as \textbf{parametric models}. The other form are called \textbf{non-parametric models}.
 	
+	\subsection{Criteria}
+	The criteria for the linear regression model is called \textbf{Ordinary Least Squares (OLS) or Mean Squared Error} because of the form of the criteria.  This is given as;
+	\begin{equation}
+	L(\theta) = \dfrac{1}{2}\sum_{i=1}^{n}\left(h_\theta(x_i) - y_i\right)^2
+	\end{equation}
+	
+	\subsection{Learning Algorithm}
+	The goal of the learning algorithm is to find the parameters $\theta$ that minimizes the loss function i.e. \\ $$ \min\limits_{\theta}L(\theta) = \dfrac{1}{2}\sum_{i=1}^{n}\left(h_\theta(x_i) - y_i\right)^2 $$
+	Two approaches (Analytical method or Numerical methods) can be used to solve this problem.
+	
+	\subsubsection{Numerical Approach}
+	Let $\Theta$ be the vector of $\theta$s and $Theta_0$ the initial solution, we can update $\Theta$ by repeatedly subtracting the gradient of the loss function from $\Theta$ until convergence i.e. \\
+	Repeat 
+	\begin{equation}\label{gradient descent}
+	\theta_j := \theta_{j-1} - \alpha\dfrac{\partial}{\partial\theta_{j-1}}L(\theta_{j-1})
+	\end{equation} where $\alpha$ is the \textbf{learning rate} and is an hyperparameter to be tuned.
+	This form of learning in \eqref{gradient descent} is known as \textbf{gradient descent}. It involves taking steps in the opposite direction of steepest ascent gotten through the gradient.
+	
+	\subsubsection{Computing the Gradient of Loss Function}
+	For one example, $h_\theta(x_i) = \Theta{x_i}$
+	\begin{equation*}
+	\begin{array}{cl}
+	\dfrac{\partial}{\partial\theta}L(\theta) &= \dfrac{\partial}{\partial\theta} \dfrac{1}{2}\left(h_\theta(x_i) - y_i\right)^2 \\
+	\\
+	&= \dfrac{\partial}{\partial\theta} \dfrac{1}{2}\left(\theta_i{x_i} - y_i\right)\dfrac{\partial}{\partial\theta}\left(\theta{x_i - y}\right) \\\\
+	&= \left(\theta_i{x_i} - y_i\right)x_i^j \\\\
+	&= \left(h_\theta(x_i) - y_i\right)x_i^j
+	\end{array}
+	\end{equation*} where $x_i^j$ is the jth feature of the ith example. Therefore the update rule can be modified as;
+	$\theta_j = \theta_{j} + \alpha(y_i - h_\theta(x^{(i)}))x_i^j$.
+	The equation indicates that for a fixed learning rate, the amount of update is dependent on the difference between predictions and target. This is called the \textbf{Widrow-Hoff update rule} or \textbf{least mean square rule}.
+	
+	\subsubsection{Batch Gradient Descent}
+	Gradient descent in general assumes that the loss function is differentiable and convex. If the loss function is not convex, the solution might get stuck in a local optimum and not find the global optimum. For linear regression, we can show that the loss function is convex as it is a function of 2nd polynomial and positive. \\ 
+	The batch gradient descent uses all the examples on each iteration to compute the gradient. For a large set of examples, this can be computationally expensive and not used in practice. This also requires that the gradient is computed for every example before making one step of gradient descent. 
+	\\
+	${}\hspace{30pt} \text{Repeat until convergence;} $\\
+	$$ \Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	
+	\subsubsection{Stochastic Gradient Descent}
+	Stochastic gradient descent selects a sample at random from the examples and uses this to update the gradient. This has the advantage of being fast and requiring less memory but does not guarantee convergence to the optimal solution (even though an approximate solution is usually good enough in practise) after the update. Also, update is not smooth as the direction of descent is dependent on only one data which may be noisy. \\
+	${}\hspace{30pt} \text{Repeat until convergence;} $\\
+	${}\hspace{50pt} \text{for i : 1 to n;} $
+	
+	$$ \Theta = \Theta + \alpha\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	
+	\subsubsection{Mini-batch Stochastic Gradient Descent}
+	A compromise between batch gradient descent and stochastic gradient descent is the mini-batch gradient descent. It uses a mini-batch of examples samples at random from the dataset  to update the parameters. This has the advantage of reducing the variance during update and therefor smoother. It also maximixes the usage of hardware and cpu vectorization for efficient computations. \\ \\
+	${}\hspace{30pt} \text{Repeat until convergence;} $\\
+	${}\hspace{50pt} \text{for k subset in n;} $
+	 
+	 $$ \Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $$
+	 	
+	\subsubsection{Analytical Method}
+	The analytical method performs a single computation using the data matrix. It the does not require to be performed iteratively and does not require a learning rate.
+	\begin{equation*}
+		\begin{array}{cl}
+		L(\theta) &= \dfrac{1}{2}\|X\Theta - y\|^2 \\
+		&= \dfrac{1}{2}(X\Theta - y)^T(X\Theta - y) \\
+		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) \\
+		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) ~ \text{as} ~ (A - B)^T = A^T - B^T \text{and} ~ (AB)^T = B^TA^T \\
+		&= \dfrac{1}{2}(\Theta^{T}X^TX\Theta - 2y^TX\Theta + y^Ty)
+		\end{array}
+	\end{equation*}
+	The gradient of $L(\Theta)$ is then computed as;
+	\begin{equation*}
+		\nabla_\theta = \dfrac{1}{2}\left(2X^TX\Theta - 2X^Ty\right)
+	\end{equation*}
+	\begin{equation*}
+	X^TX\Theta = X^Ty
+	\end{equation*}
+	\begin{equation}\label{normal_eqn}
+	\Theta = \left(X^TX\right)^{-1}X^Ty
+	\end{equation}
+	\eqref{normal_eqn} is known as the normal equation and requires the inverse of $X^TX$ to be computed. $X^TX$ may not be invertible and can be expensive to compute depending on the size of the dataset. To avoid the invertibility problem, the pseudoinverse can be computed and we can manually remove correlated features (by computing correlation matrix) if the features are linearly dependent. Another approach is to add regularization. To regularize the model, the sum of squares of the parameters is added to the loss function. This has the effect of also reducing the size of values of the parameters if the regularization parameter $\lambda$ is set appropraitely.
+	
+	
+	\begin{equation}
+	L(\theta) = \dfrac{1}{2}\|X\Theta - y\|^2 + \lambda\left\|\Theta\right\|_2^2
+	\end{equation}
+	\begin{equation}
+		\Theta = \left(X^TX + \lambda{I}\right)^{-1}y^TX
+	\end{equation}
+	The proof of these regularization is shown in a later chapter using the Maximum a posteriori extimation(MAP). $I$ is the identity matrix and $\left(X^TX + \lambda{I}\right)^{-1}$ always exist
 %	$\{(x^2+y^4)\}$ $\left\{\left(x^2+y^4\right)\right\}$
 	
 	
