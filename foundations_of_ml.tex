@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,titlepage,landscape]{book}
+\documentclass[12pt,a4paper,titlepage,landscape]{book}
 \usepackage[left=4cm, right=4cm, top=2cm, bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -123,6 +123,7 @@
 %	$\{(x^2+y^4)\}$ $\left\{\left(x^2+y^4\right)\right\}$
 	
 	\subsection{Maximum Likelihood Estimation}
+	Maximum Likelihood estimation is a way of estimating the best parameters of a model given the data by maximizing the probability of the data.\\
 	Given that $y_i = \Theta^Tx^i + \varepsilon_i$
 	where $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$; the features are assumed to be centered with $\mu = 0$ and $\varepsilon_i$ is the difference between predictions and target which is a random variable and is Independently and Identically Distributed (IID). \\
 	We know that for a normally distibuted random variable, $PDF = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(x_i-\mu)^2}{2\sigma^2}}$ \\
@@ -140,5 +141,85 @@
 	\textbf{Maximixing} the log likelihood of $P(y_i | x_i; \Theta)$ is equivalent to \textbf{minimizing} the loss.
 	$$\min\limits_\theta{L(\Theta) }= \sum_{i=1}^{n}(y_i - h_\theta(x_i))^2$$ and is same output as the criteria specified in \eqref{loss_function}.
 	
+	\section{Classification Problem}
+	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ $\in$ \{0, 1\} or $y_i$ $\in$ \{-1, 1\}  are the targets, corresponding to the features. In regression, the goal is to estimate a continuous variable while the estimated targets in classification are discrete. If $y$ has two classes, it is called \textbf{binary classification} while for classes greater than two, it is called \textbf{multi-class classification}.   The goal is to learn  a function or hypothesis which maps the features to classes $y$. \\
 	 
+	 
+	\subsection{Hypothesis}
+	\subsubsection{Logistic Regression}
+	Logistic regression aims to fit a linear hyperplane separating the datapoints. An \textbf{hyperplane} is 1 dimension less than the plane in which it lives. 
+	
+	\begin{center}
+		\includegraphics[width=0.7\linewidth, height=0.7\textheight]{../placeholder}
+	\end{center}
+	The hypothesis is given by  $h_\theta(x) = \dfrac{1}{1+e^{-\Theta^Tx}}$. This assures that the predictions are bounded by 0 and 1. The form of the hypothesis is referred to as the sigmoid function or the logistic function. The sigmoid function is shown in \ref{fig:sigmoid} and the general form is $$g(z) = \dfrac{1}{1+e^{-z}} $$
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.4\linewidth, height=0.4\textheight]{../placeholder}
+		\caption{}
+		\label{fig:sigmoid}
+	\end{figure}
+	
+	\subsubsection{Criteria}
+	$$P(y = 1 | x;\Theta) = h_\theta(x)$$
+	$$P(y = 1 | x;\Theta) = 1 - h_\theta(x)$$
+	In compact form,
+	$$P(y|x;\Theta) = h_\theta(x)^y * (1-h_\theta(\Theta))^{1-y}$$ 
+	This equation relates to the bernoulli distribution equation. We can use the maximum likelihood estimation principle to get the criteria for the logistic regression as follows.
+	$$\mathcal{L}(\Theta) = P(y|X;\Theta)$$
+	$$\mathcal{L}(\Theta) = \prod_{i=1}^{n}P(y_i|x_i;\Theta)$$
+	$$\mathcal{L}(\Theta) = \prod_{i=1}^{n}h_\theta(x_i)^{y_i} * (1-h_\theta(x_i))^{1-y_i}$$
+	
+	$$
+		\mathcal{L}(\Theta) = \sum_{i=1}^{n}\left(y_ilog(h(x_i)) + (1-y_i)log(1-h_\theta(x_i))\right)
+	$$
+	In similar terms, maximizing the likelihood is equivalent to minimizing the negative log likelihood.
+	$$arg\max\limits_{\theta}\mathcal{L}(\Theta) = arg\min\limits_{\theta}~-\mathcal{L}(\Theta)$$
+	
+	\begin{equation}\label{cross-entropy-loss}
+	L(\Theta) = -\sum_{i=1}^{n}\left(y_ilog(h(x_i)) + (1-y_i)log(1-h_\theta(x_i))\right)
+	\end{equation}
+	
+	\eqref{cross-entropy-loss} is known as the cross-entropy loss function. $\mathcal{L}(\Theta)$ is the log-likelihood and $L(\Theta)$ is the loss.
+	
+	\subsubsection{Learning Algorithm}
+	Recall that $\Theta := \Theta + \alpha\nabla_\theta\mathcal{L}(\Theta)$ and $h_\theta(x) = g(\Theta^Tx) = \dfrac{1}{1+e^{-\Theta^Tx}}$
+	
+	$$
+	\mathcal{L}(\Theta) = \sum_{i=1}^{n}\left(y_ilog(h(x_i)) + (1-y_i)log(1-h_\theta(x_i))\right)
+	$$
+	
+	\subsubsection{Computing the Gradient}
+	$$\dfrac{\partial}{\partial\theta}\mathcal{L}(\Theta) = \left(y\dfrac{1}{g(\Theta^Tx)} - (1-y)\dfrac{1}{1-g(\Theta^Tx)}\right).\dfrac{\partial}{\partial\theta_i}g(\Theta^Tx)$$
+	
+	$\text{But the derivative of sigmoid}~ g^1(z) = g(z).(1-g(z)) $ This implies
+	
+	$$\dfrac{\partial}{\partial\theta}\mathcal{L}(\Theta) = \left(y\dfrac{1}{g(\Theta^Tx)} - (1-y)\dfrac{1}{1-g(\Theta^Tx)}\right).g\left(\Theta^Tx\right)\left(1-g(\Theta^Tx)\right).\dfrac{\partial}{\partial\theta_i}\Theta^Tx$$
+	
+	$$\dfrac{\partial}{\partial\theta}\mathcal{L}(\Theta) = \left(y(1-g(\Theta^Tx)) - (1-y)g(\Theta^Tx)\right)x^j$$
+	
+	$$\dfrac{\partial}{\partial\theta}\mathcal{L}(\Theta) = (y-h_\theta(x))x^j$$
+	The update rule for one example then becomes; \\\\
+	${}\hspace{30pt} \text{Repeat until convergence;} $\\
+	${}\hspace{50pt} \text{for i = 1 to n;} $\\
+	${}\hspace{60pt} \Theta := \Theta + \sum_{i=1}^{n}\alpha (y_i - h_\theta(x_i))x_i^j$\\
+	
+	\subsubsection{Derivative of the sigmoid function}
+	$$g(x) = \dfrac{1}{1+e^{-x}}$$
+	
+	\begin{equation}
+	\begin{array}{cl}
+		g^1(x) &= \dfrac{\delta}{\delta{x}} \left(1 + e^{-x}\right)^{-1} \\
+		&= -1(1+e^{-x})^{-2}(-e^{-x}) \\
+		&= \dfrac{e^{-x}}{\left(1+e^{-x}\right)^2} \\
+		&= \dfrac{1}{\left(1+e^{-x}\right)}.\dfrac{(1+e^{-x})-1}{\left(1+e^{-x}\right)} \\
+		&= \dfrac{1}{1+e^{-x}}.\left(\dfrac{1+e^{-x}}{1+e^{-x}} - \dfrac{1}{1+e^{-x}}\right) \\
+		&= \dfrac{1}{1+e^{-x}}.\left(1 - \dfrac{1}{1+e^{-x}}\right) \\
+		g^1(x) &= g(x).(1-g(x))
+	\end{array}
+	\end{equation}
+	
+	\section{Risk Minimization}
+	
 \end{document}
