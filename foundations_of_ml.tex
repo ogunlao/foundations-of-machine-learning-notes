@@ -38,7 +38,7 @@
 	
 	\subsection{Criteria}
 	The criteria for the linear regression model is called \textbf{Ordinary Least Squares (OLS) or Mean Squared Error} because of the form of the criteria.  This is given as;
-	\begin{equation}
+	\begin{equation}\label{loss_function}
 	L(\theta) = \dfrac{1}{2}\sum_{i=1}^{n}\left(h_\theta(x_i) - y_i\right)^2
 	\end{equation}
 	
@@ -123,5 +123,22 @@
 %	$\{(x^2+y^4)\}$ $\left\{\left(x^2+y^4\right)\right\}$
 	
 	\subsection{Maximum Likelihood Estimation}
+	Given that $y_i = \Theta^Tx^i + \varepsilon_i$
+	where $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$; the features are assumed to be centered with $\mu = 0$ and $\varepsilon_i$ is the difference between predictions and target which is a random variable and is Independently and Identically Distributed (IID). \\
+	We know that for a normally distibuted random variable, $PDF = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(x_i-\mu)^2}{2\sigma^2}}$ \\
+	Since $\varepsilon_i$ is assumed to be normally distributed, 
+	$$P(\varepsilon_i) = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{\varepsilon_i^2}{2\sigma^2}}$$
+	$$P(\varepsilon_i) = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(y_i - h_\theta(x_i))^2}{2\sigma^2}}$$
+	For one example, $P(y_i | x_i;\Theta) = P(\varepsilon_i)$ and is read as Probability of $y_i$ given $x_i$ parameterized by theta equals probability of the error in estimation. For all examples,
+	$$\prod_{i=1}^{n}P(y_i | x_i; \Theta) = \prod_{i=1}^{n}\dfrac{1}{\sigma\sqrt{2\pi}}e^{\dfrac{-(y_i - h_\theta(x_i))^2}{2\sigma^2}}$$
 	
+	Taking the log of both sides, (to eliminate the exponent),
+	$$log \sum_{i=1}^{n}P(y_i | x_i;\Theta) = log \sum_{i=1}^{n}\dfrac{1}{\sigma\sqrt{2\pi}} + \sum_{i=1}^{n}-\dfrac{(y_i - h_\theta(x_i))^2}{2\sigma^2}$$
+	Combining all the constant elements of the equation,
+	$$P(y_i | x_i;\Theta) = \sum_{i=1}^{n}-\dfrac{(y_i - h_\theta(x_i))^2}{2\sigma^2} + C$$ since logarithm of a function is a monotonically increasing transformation of the function. 
+	
+	\textbf{Maximixing} the log likelihood of $P(y_i | x_i; \Theta)$ is equivalent to \textbf{minimizing} the loss.
+	$$\min\limits_\theta{L(\Theta) }= \sum_{i=1}^{n}(y_i - h_\theta(x_i))^2$$ and is same output as the criteria specified in \eqref{loss_function}.
+	
+	 
 \end{document}
