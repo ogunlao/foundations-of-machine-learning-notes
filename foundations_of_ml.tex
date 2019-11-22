@@ -6,12 +6,17 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+
 \author{\text{A lesson note by}~Sewade O. Ogun}
-\title{Foundations of Machine Learning}
+\title{\includegraphics[width=0.3\linewidth]{logo} \\\textbf{Foundations of Machine Learning}
+}
 \date{\today, \text{AIMS Ghana}}
+
+
+
 \begin{document}
 	\maketitle
-	\textbf{Symbols and Notations} \\
+	\textbf{Symbols and Notations} \\\\
 	$\theta_i - \text{Parameter i}$ \\\\
 	$\Theta - \text{Set of Parameters} \theta$ \\\\
 	$n - \text{Number of examples}$ \\\\
@@ -30,9 +35,20 @@
 	\chapter{Supervised Learning}
 	\section{Regression Problem}
 	
-	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features, we can learn a function or hypothesis which maps the features $x_i$ to the target $y_i$ i.e $h : \mathbb{R}^d \to \mathbb{R}^c $ \\
-	
-	Given a supervised learning task, it is required to understand the given problem at hand to determine; \\
+	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features, we can learn a function or hypothesis which maps the features $x_i$ to the target $y_i$ i.e $h : \mathbb{R}^d \to \mathbb{R}^c $
+	\begin{table}[]\label{data_table}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\textbf{} & \textbf{Weight (kg)} & \textbf{Color} & \textbf{Price (NGN)} \\ \hline
+			x1                & 2.5                  & 0.8            & 1000                 \\ \hline
+			x2                & 1.3                  & 0.2            & 800                  \\ \hline
+			x3                & 3.7                  & 0.6            & 1700                 \\ \hline
+			x4                & 1.4                  & 700            & ...                  \\ \hline
+		\end{tabular}
+	\caption {Table showing features and target of measurements gotten from observing tubers of yam sales. }
+	\end{table}
+	From table \ref{data_table}, Weight and Color are the features we wish to use to predict Price given the observations. This called a supervised learning task as the target is known.\\
+	Given the supervised learning task, it is necessary to understand the given problem at hand by evaluating the following; \\
 	\begin{enumerate}
 		\item [a.] Data
 		\item [b.] Hypothesis or model or Hypothesis class e.g. Regression
@@ -40,7 +56,7 @@
 		\item[d.] Learning Algorithm
 	\end{enumerate}
 \begin{center}
-	\includegraphics[width=0.7\linewidth]{../placeholder}
+	\includegraphics[width=0.7\linewidth, height=0.5\textheight]{model}
 \end{center}
 	
 	\subsection{Hypothesis}
@@ -144,10 +160,12 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.3\linewidth, height=0.3\textheight]{../placeholder}
-		\caption{}
-		\label{fig:newton}
-	\end{figure}.
+		\includegraphics[width=0.5\linewidth, height=0.5\textheight]{loss-landscape}
+		\caption{Newton Method showing theta update}
+		\label{fig:loss-landscape}
+	\end{figure}
+	
+	
 	We want to find the point on the curve where the function is a minimum. Newton's method gives the formula as $\Theta := \Theta - \dfrac{f(\theta)}{f_i}$. For our machine learning task, this implies looking for the parameters $\Theta$ where the gradient is zero. 
 	$$g = f^,$$ $$g^, = f^{,,}$$
 	$$\Theta := \Theta - \dfrac{g}{g_i}$$
@@ -187,18 +205,24 @@
 	\subsection{Hypothesis}
 	\subsubsection{Logistic Regression}
 	Logistic regression aims to fit a linear hyperplane separating the datapoints. An \textbf{hyperplane} is 1 dimension less than the plane in which it lives. 
-	
-	\begin{center}
-		\includegraphics[width=0.7\linewidth, height=0.7\textheight]{../placeholder}
-	\end{center}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth, height=0.5\textheight]{logistic-regression}
+		
+		\caption[]{Diagram Showing Hyperplane separating the two classes\protect\footnotemark}
+		\label{fig:logistic-regression}
+	\end{figure}
+	\footnotetext{https://www.geeksforgeeks.org/understanding-logistic-regression/}
 	The hypothesis is given by  $h_\theta(x) = \dfrac{1}{1+e^{-\Theta^Tx}}$. This assures that the predictions are bounded by 0 and 1. The form of the hypothesis is referred to as the sigmoid function or the logistic function. The sigmoid function is shown in \ref{fig:sigmoid} and the general form is $$g(z) = \dfrac{1}{1+e^{-z}} $$
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.4\linewidth, height=0.4\textheight]{../placeholder}
-		\caption{}
+		\includegraphics[width=0.4\linewidth]{sigmoid}
+		\caption[Sigmoid]{Sigmoid Function\protect\footnotemark}
 		\label{fig:sigmoid}
 	\end{figure}
+	\footnotetext{https://towardsdatascience.com/logistic-regression-a-simplified-approach-using-python-c4bc81a87c31}
 	
 	\subsubsection{Criteria}
 	$$P(y = 1 | x;\Theta) = h_\theta(x)$$
@@ -298,11 +322,23 @@
 	The risk is composed of noise $\sigma^2$, bias
 	$[\mathbb{E}(h_{\theta^*}(x) - h_\theta(x))]^2$ and variance $Var[h_{\theta^*}(x) - h_\theta{x}]$ of the model. The noise $\sigma^2$ is derived from the data and not under the model's control, and is also the minimum loss value our model can have. It is also a requirement to have low values for both variance and bias. \\\\
 	Reducing the variance when training the model increases the bias of the model and vice-versa. The solution is to find a model with the right complexity which reduces the variance and bias simultaneously. This phenomenon is called the \textbf{Bias-Variance Tradeoff}.
-	\\\\
+	
+	\subsubsection{Bias and Variance}
+	A model is said to be overfitting  if it has a high variance and is seen where the training set loss is low while the validation set loss is high. A model is said to be underfitting if training set loss is high and validation set loss is also high.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth, height=0.5\textheight]{bias_variance}
+		\caption[]{Diagram Showing Overfitting, Normal and Underfitting\protect\footnotemark}
+		\label{fig:biasvariance}
+	\end{figure}
+
+	\footnotetext{https://scipy-lectures.org/packages/scikit-learn/auto\_examples/plot\_bias\_variance.html\#bias-and-variance-of-polynomial-fit}
+	
 	For high bias model, we can (1) train the model for a longer period (2) use a more complex model (3) increase the learning rate\\
 	For high variance model, we can (1) get more training data (2) make the model simpler (3) reduce the number of features (4) add regularization. \\\\
 	In practise, the data is split into training and validation sets (but slitting the data into two folds also has the effect of making us loose information in the validation set that could have been used by the model). \\
-	A model is said to be overfitting  if it has a high variance and is seen where the training set loss is low while the validation set loss is high. A model is said to be underfitting if training set loss is high and validation set loss is also high.\\
+	
 	To cater for the effect of data splitting, \textbf{cross-validation} method is used to choose the best model.
 	
 	\subsubsection{K-Fold Cross Validation}
@@ -339,6 +375,8 @@
 	\begin{enumerate}
 		\item[a.] \textbf{Forward Search}
 		It begins with an empty set and proceeds to find most predictive combination of features from all the feature subsets.
+		
+		\textbf{Algorithm}
 		\begin{enumerate}
 			\item[1.] Intialize $F = \emptyset$
 			\item[2.] Repeat \{
@@ -354,7 +392,8 @@
 		\} 
 		\end{enumerate}
 	For d features, complete forward search takes $\mathcal{O}(d^2)$\\
-		\item[b.] Backward Search
+		\item[b.] Backward Search \\
+		\textbf{Algorithm}
 		\begin{enumerate}
 			\item[1.] Initialize $F = \mathbf{U} $, the set of all features
 			\item[2.] Repeat \{
@@ -376,6 +415,9 @@
 	$$MI(x^{(i)},y) = KL\left(P\left(x^{(i)}\right) || P\left(x^{(i)}P(y)\right)\right)$$
 	where $MI$ is the mutual information, $KL$ is Kulback-Leibler Divergence (which is also known as relative entropy).
 	
+	$$\text{KL Distance,}~D_{KL}(X||y) = \sum_{i=1}^{n}[P(x_i)*log\dfrac{x_i)}{y_i}]$$
+	
+	\textbf{Algorithm}
 	\begin{enumerate}
 		\item Compute MI
 		\item Take k set of features with largest correlation
@@ -383,6 +425,8 @@
 	\textbf{Advantage: }Complexity of filter methods is linear with time i.e. $\mathcal{O}(d)$ for $d$ features. \\
 	\textbf{Disadvantage: }It does not take into account cross-correlation between features. \\\\
 	A combination of Wrapper method and filter method can be used to select the most predictive features, combining their relative strength.
+	
+	
 	
 	
 	
