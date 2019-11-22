@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  22 NOV 2019 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  22 NOV 2019 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**foundations_of_ml.tex
-(./foundations_of_ml.tex
+**foundationML.tex
+(./foundationML.tex
 LaTeX2e <2018-12-01>
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo
-File: bk12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk11.clo
+File: bk11.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@chapter=\count81
@@ -167,8 +167,8 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen121
 \Gin@req@width=\dimen122
 )
-(./foundations_of_ml.aux)
-\openout1 = `foundations_of_ml.aux'.
+(./foundationML.aux)
+\openout1 = `foundationML.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
@@ -202,12 +202,12 @@ LaTeX Font Info:    ... okay on input line 12.
 * \topmargin=-47.23828pt
 * \headheight=12.0pt
 * \headsep=19.8738pt
-* \topskip=12.0pt
-* \footskip=30.0pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
 * \marginparwidth=144.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -290,240 +290,73 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--30
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
 [2]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--36
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
-<../placeholder.png, id=15, 1401.235pt x 758.835pt>
-File: ../placeholder.png Graphic file (type png)
-<use ../placeholder.png>
-Package pdftex.def Info: ../placeholder.png  used on input line 43.
-(pdftex.def)             Requested size: 432.19547pt x 234.05537pt.
 
-Underfull \vbox (badness 5217) has occurred while \output is active []
+! LaTeX Error: File `../../../Downloads/ppp' not found.
 
- [3
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33 ...eight=\textheight]{../../../Downloads/ppp}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 38.
+
+[3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <../placeholder.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 61--61
-
- []
-
-
-Underfull \vbox (badness 4569) has occurred while \output is active []
-
- [5]
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
-
- []
-
-[7]
-File: ../placeholder.png Graphic file (type png)
-<use ../placeholder.png>
-Package pdftex.def Info: ../placeholder.png  used on input line 147.
-(pdftex.def)             Requested size: 185.22444pt x 145.10646pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
-
- []
-
-[8] [9]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 184.
-
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 184.
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
-
- []
-
-[10]
-File: ../placeholder.png Graphic file (type png)
-<use ../placeholder.png>
-Package pdftex.def Info: ../placeholder.png  used on input line 192.
-(pdftex.def)             Requested size: 432.1975pt x 338.58946pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-File: ../placeholder.png Graphic file (type png)
-<use ../placeholder.png>
-Package pdftex.def Info: ../placeholder.png  used on input line 198.
-(pdftex.def)             Requested size: 246.95166pt x 193.47142pt.
-
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 241--246
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--246
-
- []
-
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 267--272
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--307
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--307
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--307
-
- []
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 334--338
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--338
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--386
-
- []
-
-[19] (./foundations_of_ml.aux) ) 
+[4] (./foundationML.aux) ) 
 Here is how much of TeX's memory you used:
- 3452 strings out of 492615
- 46448 string characters out of 6131389
- 130622 words of memory out of 5000000
- 7293 multiletter control sequences out of 15000+600000
- 15823 words of font info for 59 fonts, out of 8000000 for 9000
+ 3420 strings out of 492615
+ 45807 string characters out of 6131389
+ 129538 words of memory out of 5000000
+ 7256 multiletter control sequences out of 15000+600000
+ 13598 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,724b,403s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
-bols/msbm10.pfb>
-Output written on foundations_of_ml.pdf (19 pages, 201798 bytes).
+ 41i,8n,25p,279b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+xti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb>
+Output written on foundationML.pdf (4 pages, 124187 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -6,16 +6,31 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\author{Sewade O. Ogun}
+\author{\text{A lesson note by}~Sewade O. Ogun}
 \title{Foundations of Machine Learning}
 \date{\today, \text{AIMS Ghana}}
 \begin{document}
 	\maketitle
-	
+	\textbf{Symbols and Notations} \\
+	$\theta_i - \text{Parameter i}$ \\\\
+	$\Theta - \text{Set of Parameters} \theta$ \\\\
+	$n - \text{Number of examples}$ \\\\
+	$d - \text{Number of features}$ \\\\
+	$x_i - \text{A single example at row i}$ \\\\
+	$x_i^j - \text{A feature j at row i }$ \\\\
+	$y - \text{Array of targets}$ \\\\
+	$D - \text{Dataset consisting of}~X,y$ \\\\
+	$L(\Theta)  - \text{Loss on the entire dataset}$
+	$L(\Theta)  - \text{Loss on the entire dataset}$
+	$\partial - \text{Partial derivative}$ \\\\
+	$\nabla - \text{Gradient}$ \\\\
+	$\lambda - \text{Learning rate or preconditioner}$ \\\\
+	$\mathbf{U} - \text{Universal Set}$ \\\\
+	$\mathcal{O}(n) - \text{Worse case complexity, BigO}$ \\\\
 	\chapter{Supervised Learning}
 	\section{Regression Problem}
 	
-	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features, we can learn a function or hypothesis which maps the features $x_i$ to the target $y_i$ i.e $h : \mathbb{R}^d -> \mathbb{R}^c $ \\
+	Given a set of datapoints, $ D = \left\{\left(X_i, y_i\right)\right\}_{i=1}^n $ where $x_i$ are the features and $y_i$ are the target, corresponding to the features, we can learn a function or hypothesis which maps the features $x_i$ to the target $y_i$ i.e $h : \mathbb{R}^d \to \mathbb{R}^c $ \\
 	
 	Given a supervised learning task, it is required to understand the given problem at hand to determine; \\
 	\begin{enumerate}
@@ -78,25 +93,26 @@
 	\subsubsection{Stochastic Gradient Descent}
 	Stochastic gradient descent selects a sample at random from the examples and uses this to update the gradient. This has the advantage of being fast and requiring less memory but does not guarantee convergence to the optimal solution (even though an approximate solution is usually good enough in practise) after the update. Also, update is not smooth as the direction of descent is dependent on only one data which may be noisy. \\
 	${}\hspace{30pt} \text{Repeat until convergence;} $\\
-	${}\hspace{50pt} \text{for i : 1 to n;} $
+	${}\hspace{50pt} \text{for i in 1 to n;} $
 	
 	${}\hspace{60pt} \Theta = \Theta + \alpha\left(y_i - h_\theta(x^{(i)})\right)x_i^j $
 	
 	\subsubsection{Mini-batch Stochastic Gradient Descent}
 	A compromise between batch gradient descent and stochastic gradient descent is the mini-batch gradient descent. It uses a mini-batch of examples samples at random from the dataset  to update the parameters. This has the advantage of reducing the variance during update and therefor smoother. It also maximixes the usage of hardware and cpu vectorization for efficient computations. \\ \\
 	${}\hspace{30pt} \text{Repeat until convergence;} $\\
-	${}\hspace{50pt} \text{for k subset in n;} $
+	${}\hspace{50pt} \text{for k in 1 to no. of minibatches;} $
 	 
-	${}\hspace{60pt}\Theta = \Theta + \alpha\sum_{i=1}^{n}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $
+	${}\hspace{60pt}\Theta = \Theta + \alpha\sum_{i=1}^{mbs}\left(y_i - h_\theta(x^{(i)})\right)x_i^j $\\
+	where $mbs$ is the minibatch size.
 	 	
 	\subsubsection{Analytical Method}
 	The analytical method performs a single computation using the data matrix. It the does not require to be performed iteratively and does not require a learning rate.
 	\begin{equation*}
 		\begin{array}{cl}
-		L(\theta) &= \dfrac{1}{2}\|X\Theta - y\|^2 \\
-		&= \dfrac{1}{2}(X\Theta - y)^T(X\Theta - y) \\
-		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) \\
-		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) ~ \text{as} ~ (A - B)^T = A^T - B^T \text{and} ~ (AB)^T = B^TA^T \\
+		L(\theta) &= \dfrac{1}{2}\|X\Theta - y\|^2 \\\\
+		&= \dfrac{1}{2}(X\Theta - y)^T(X\Theta - y) \\\\
+		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) \\\\
+		&= \dfrac{1}{2}(\Theta^{T}X^T - y^T)(X\Theta - y) ~ \text{as} ~ (A - B)^T = A^T - B^T \text{and} ~ (AB)^T = B^TA^T \\\\
 		&= \dfrac{1}{2}(\Theta^{T}X^TX\Theta - 2y^TX\Theta + y^Ty)
 		\end{array}
 	\end{equation*}
@@ -122,6 +138,29 @@
 	The proof of these regularization is shown in a later chapter using the Maximum a posteriori extimation(MAP). $I$ is the identity matrix and $\left(X^TX + \lambda{I}\right)^{-1}$ always exist
 %	$\{(x^2+y^4)\}$ $\left\{\left(x^2+y^4\right)\right\}$
 	
+	\subsubsection{Newton's Method}
+	The newton's method is a second-order optimization algorithm.
+	Consider the diagram \ref{fig:newton} below,  
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.3\linewidth, height=0.3\textheight]{../placeholder}
+		\caption{}
+		\label{fig:newton}
+	\end{figure}.
+	We want to find the point on the curve where the function is a minimum. Newton's method gives the formula as $\Theta := \Theta - \dfrac{f(\theta)}{f_i}$. For our machine learning task, this implies looking for the parameters $\Theta$ where the gradient is zero. 
+	$$g = f^,$$ $$g^, = f^{,,}$$
+	$$\Theta := \Theta - \dfrac{g}{g_i}$$
+	$$\Theta := \Theta - \dfrac{f^,(\theta)}{f^,,(\theta)}$$
+	In vecorized form, $\Theta := \Theta - H^{-1}\nabla_\theta\mathcal{L}$ where $H_{ij} = \dfrac{\partial}{\partial_{\theta_i}\theta_j}\mathcal{L}(\Theta)$. $H_{ij}$ is the second partial derivative $wrt$ all the $\Theta$s and is called Hessian matrix. If $x \in \mathbb{R}^{(n, d)}$, the $H \in \mathbb{R}^{(d, d)} $ \\
+	
+	\begin{enumerate}
+		\item Newton's method is faster than stochastic gradient descent and converges in polynolial time.
+		\item It requires no learning rate and instead takes into account the curvature of the loss function during optimization.
+		\item A disadvantage is that inverting the Hessian is computationally expensive and the bigO is dependent on the number of parameters; $\mathcal{O}(d^2)$ 
+		\item To make Hessian invertible where the matrix is singular, a preconditioner is applied; $H = H + \varepsilon{I}$ where $\varepsilon$ is a small number and values range from $10e^{-8}$ to $10e^{-10}$ in practise.
+	
+	\end{enumerate}
 	\subsection{Maximum Likelihood Estimation}
 	Maximum Likelihood estimation is a way of estimating the best parameters of a model given the data by maximizing the probability of the data.\\
 	Given that $y_i = \Theta^Tx^i + \varepsilon_i$
@@ -184,7 +223,7 @@
 	\eqref{cross-entropy-loss} is known as the cross-entropy loss function. $\mathcal{L}(\Theta)$ is the log-likelihood and $L(\Theta)$ is the loss.
 	
 	\subsubsection{Learning Algorithm}
-	Recall that $\Theta := \Theta + \alpha\nabla_\theta\mathcal{L}(\Theta)$ and $h_\theta(x) = g(\Theta^Tx) = \dfrac{1}{1+e^{-\Theta^Tx}}$
+	Recall that $\Theta := \Theta + \alpha\nabla_\theta\mathcal{L}(\Theta)$ and $h_\theta(x) = g(\Theta^T\boldsymbol{x}) = \dfrac{1}{1+e^{-\Theta^T\boldsymbol{x}}}$
 	
 	$$
 	\mathcal{L}(\Theta) = \sum_{i=1}^{n}\left(y_ilog(h(x_i)) + (1-y_i)log(1-h_\theta(x_i))\right)
@@ -206,20 +245,149 @@
 	${}\hspace{60pt} \Theta := \Theta + \sum_{i=1}^{n}\alpha (y_i - h_\theta(x_i))x_i^j$\\
 	
 	\subsubsection{Derivative of the sigmoid function}
-	$$g(x) = \dfrac{1}{1+e^{-x}}$$
+	
+	\begin{equation*}
+	\begin{array}{cl}
+		g(x) &= \dfrac{1}{1+e^{-x}} \\\\
+		g^{'}(x) &= \dfrac{\delta}{\delta{x}} \left(1 + e^{-x}\right)^{-1} \\\\
+		&= -1(1+e^{-x})^{-2}(-e^{-x}) \\\\
+		&= \dfrac{e^{-x}}{\left(1+e^{-x}\right)^2} \\\\
+		&= \dfrac{1}{\left(1+e^{-x}\right)}.\dfrac{(1+e^{-x})-1}{\left(1+e^{-x}\right)} \\\\
+		&= \dfrac{1}{1+e^{-x}}.\left(\dfrac{1+e^{-x}}{1+e^{-x}} - \dfrac{1}{1+e^{-x}}\right) \\
+		\\
+		&= \dfrac{1}{1+e^{-x}}.\left(1 - \dfrac{1}{1+e^{-x}}\right) \\\\
+		g^{'}(x) &= g(x).(1-g(x))
+	\end{array}
+	\end{equation*}
+	
+	\section{Risk Minimization}
+	Given $(x_i, y_i)\sim P$ i.e. $x_i, y_i$ are samples observed from the probability distribution $P$, we want to minimize the expectation of squared errors. This is called the \textbf{True Risk Minimization}.
+	$$\min\limits_{\theta}\mathbb{E}_{(x,y)\sim{P}} (h_\theta(x)-y)^2$$ \\
+	Since we do not know the distribution and only have samples from it, we instead minimize the empirical equivalent known as the \textbf{Empirical Risk Minimization}.
+	$$\min\limits_{\theta} \dfrac{1}{n} \sum_{i=1}^{n} (h_\theta(x)-y)^2$$ \\
+	$y = h_{\theta^*}+\varepsilon$\\
+	$h_{\theta^*}$ is the best prediction possible which we desire to find. \\
+	$h_{\theta}$ is the prediction made by our model \\
+	$\varepsilon \sim \mathbb{N}(0, \sigma^2)$ called the bayes\,(optimal) error\\
 	
 	\begin{equation}
 	\begin{array}{cl}
-		g^1(x) &= \dfrac{\delta}{\delta{x}} \left(1 + e^{-x}\right)^{-1} \\
-		&= -1(1+e^{-x})^{-2}(-e^{-x}) \\
-		&= \dfrac{e^{-x}}{\left(1+e^{-x}\right)^2} \\
-		&= \dfrac{1}{\left(1+e^{-x}\right)}.\dfrac{(1+e^{-x})-1}{\left(1+e^{-x}\right)} \\
-		&= \dfrac{1}{1+e^{-x}}.\left(\dfrac{1+e^{-x}}{1+e^{-x}} - \dfrac{1}{1+e^{-x}}\right) \\
-		&= \dfrac{1}{1+e^{-x}}.\left(1 - \dfrac{1}{1+e^{-x}}\right) \\
-		g^1(x) &= g(x).(1-g(x))
+		R_{h_\theta} &= \mathbb{E}[(y-h_\theta(x))^2] \\
+		&= \mathbb{E}[(h_{\theta^*} + \varepsilon -h_{\theta}(x))^2] =
+		\mathbb{E}[(\varepsilon + (h_{\theta^*}  -h_{\theta}(x))^2] \\
+		\text{Let}~b = (h_{\theta^*}  -h_{\theta}(x))^2 \\
+		&= \mathbb{E}[\varepsilon_i^2 + 2\varepsilon_i{b} + b^2] \\
+		&= \mathbb{E}[\varepsilon^2] + \mathbb{E}[2\varepsilon_i{b}] + \mathbb{E}[b^2] \\
+		\linebreak
+		\text{Recall;} \\
+		Var(x) &= \mathbb{E} - [\mathbb{E}(x)]^2 \\
+		&= \mathbb{E}[(x - \mu)^2] ~ \text{where} ~ \mathbb{E}(x) = \mu \\
+		&= \mathbb{E}(x^2 -2\mu{x}+\mu^2) \\
+		&= \mathbb{E}(x^2)-2\mu\mathbb{E} + \mu^2 \\
+		&= \mathbb{E}(x^2)-2\mu^2 + \mu^2 \\
+		&= \mathbb{E}(x^2) + \mu^2 \\
+		&= \mathbb{E}(x^2)-[\mathbb{E}(x)]^2 \\\\
+		\text{Plugging in Var}(x);
+		R_{h_\theta} &= Var(\varepsilon) + [\mathbb{E}(\varepsilon)]^2 + 2\mathbb{E}(\varepsilon)\mathbb{E}(b) + Var(b) + [\mathbb{E}(b)]^2 but \mathbb{E} = 0 \\
+		&= Var(\varepsilon) + Var(b) + [\mathbb{E}(b)]^2 \\
+		&= \sigma^2 + Var(b) + [\mathbb{E}(b)]^2 \\
+		&= \sigma^2 + Var(h_{\theta^*}(x) - h_\theta{x}) + [\mathbb{E}(h_{\theta^*}(x) - h_\theta(x))]^2
+				
 	\end{array}
 	\end{equation}
+	The risk is composed of noise $\sigma^2$, bias
+	$[\mathbb{E}(h_{\theta^*}(x) - h_\theta(x))]^2$ and variance $Var[h_{\theta^*}(x) - h_\theta{x}]$ of the model. The noise $\sigma^2$ is derived from the data and not under the model's control, and is also the minimum loss value our model can have. It is also a requirement to have low values for both variance and bias. \\\\
+	Reducing the variance when training the model increases the bias of the model and vice-versa. The solution is to find a model with the right complexity which reduces the variance and bias simultaneously. This phenomenon is called the \textbf{Bias-Variance Tradeoff}.
+	\\\\
+	For high bias model, we can (1) train the model for a longer period (2) use a more complex model (3) increase the learning rate\\
+	For high variance model, we can (1) get more training data (2) make the model simpler (3) reduce the number of features (4) add regularization. \\\\
+	In practise, the data is split into training and validation sets (but slitting the data into two folds also has the effect of making us loose information in the validation set that could have been used by the model). \\
+	A model is said to be overfitting  if it has a high variance and is seen where the training set loss is low while the validation set loss is high. A model is said to be underfitting if training set loss is high and validation set loss is also high.\\
+	To cater for the effect of data splitting, \textbf{cross-validation} method is used to choose the best model.
 	
-	\section{Risk Minimization}
+	\subsubsection{K-Fold Cross Validation}
+	Given the set of data $D = \left\{(x_i, y_i)\right\}_{i=1}^m$ and the criteria such as $L(\theta) = \dfrac{1}{2}\sum_{i=1}^{n}\left(h_\theta(x_i) - y_i\right)^2$ for linear regression;
+	\begin{enumerate}
+		\item Randomly split $D$ into k disjoint subsets of size $\frac{m}{k}$
+		$$D = \bigcup\limits_{i=1}^{k}D_i$$
+		\item For each model $M_i$, \\
+		${}\hspace{30pt} \text{For each j = 1, ..., k}$ \\
+		${}\hspace{40pt}  \text{Train}~ M_{ij} on D - D_j$ \\
+		${}\hspace{40pt}$  \text{Test on}~$D_j$ and compute $L_{D_j}(M_{ij})$
+		\item Compute generalization error of $M_i$ = average of $L_{D_j}(M_{ij})$
+		\item Pick the model $M$ with the lowest generalization error i.e. model that has reduced risk $R_{h_\theta}$
+		\item Put all the data together i.e retrain $D$ using the best model.
+	\end{enumerate}
+
+	An extreme case of the K-Fold cross validation where all the data are split into n folds is called \textbf{Leave-One-Out Cross Validation}. In this case, only one example is used for validation at each instance and can be used when the number of examples, n is not large.\\
+	
+	\subsubsection{Hints}
+	\begin{enumerate}
+		\item Typically, $k = 10$ for large dataset and $k = 3$ for smaller dataset.
+		\item Number of folds should be less than number of examples $k \leq n$
+		\item If the number of examples is very large, say $n  = 1000000$, cross validation may not be necessary provided the validation set can be representative.
+		
+	\end{enumerate}
+	
+	\subsection{Reducing the Model Complexity}
+	\subsubsection{Feature Selection}
+	Feature selection is done to (1) reduce the model complexity (2) determine the features that are most predictive (3) reduce the number of features, preventing overfitting. \\
+	For d features, the number of feature subsets = $2^d$.
+	There are two feature selection methods, namely (1) Wrapper Methods (2) Filter Methods. \\
+	\\
+	\subsubsection{Feature Selection with Wrapper Methods}
+	\begin{enumerate}
+		\item[a.] \textbf{Forward Search}
+		It begins with an empty set and proceeds to find most predictive combination of features from all the feature subsets.
+		\begin{enumerate}
+			\item[1.] Intialize $F = \emptyset$
+			\item[2.] Repeat \{
+			\begin{enumerate}
+				\item[a.] For i in range(d)
+				\begin{enumerate}
+					\item[-] if i $\notin F$, let $F_i=F\cup\{i\}$
+					\item[-] Use cross-validation to evaluate $F_i$
+				\end{enumerate}
+				\item[b.] Set $F$ to be the best subset found at $(a)$
+			\end{enumerate}
+			\item[3.] Select the best subset that was found during the entire procedure.
+		\} 
+		\end{enumerate}
+	For d features, complete forward search takes $\mathcal{O}(d^2)$\\
+		\item[b.] Backward Search
+		\begin{enumerate}
+			\item[1.] Initialize $F = \mathbf{U} $, the set of all features
+			\item[2.] Repeat \{
+			\begin{enumerate}
+				\item[a.] For i in range(d)
+				\begin{enumerate}
+					\item[-] if i $\in F$, let $F_i=F - \{i\}$
+					\item[-] Use cross-validation to evaluate $F_i$
+				\end{enumerate}
+				\item[b.] Set $F$ to be the best subset found at $(a)$
+			\end{enumerate}
+			\item[3.] Select the best subset that was found during the entire procedure.
+			\}
+		\end{enumerate}
+	\end{enumerate}
+
+	\subsubsection{Feature Selection with Filter Methods}
+	Filter methods measure correlation between each feature and target. The features with more correlation are more predictive of the target variable. A type of correlation commonly used is called \textbf{Mutual Information}.
+	$$MI(x^{(i)},y) = KL\left(P\left(x^{(i)}\right) || P\left(x^{(i)}P(y)\right)\right)$$
+	where $MI$ is the mutual information, $KL$ is Kulback-Leibler Divergence (which is also known as relative entropy).
+	
+	\begin{enumerate}
+		\item Compute MI
+		\item Take k set of features with largest correlation
+	\end{enumerate} 
+	\textbf{Advantage: }Complexity of filter methods is linear with time i.e. $\mathcal{O}(d)$ for $d$ features. \\
+	\textbf{Disadvantage: }It does not take into account cross-correlation between features. \\\\
+	A combination of Wrapper method and filter method can be used to select the most predictive features, combining their relative strength.
+	
+	
+	
+	
+	
+	
 	
 \end{document}
