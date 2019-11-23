@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  22 NOV 2019 21:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  23 NOV 2019 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -167,6 +167,10 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen121
 \Gin@req@width=\dimen122
 )
+
+LaTeX Warning: Unused global option(s):
+    [portrait].
+
 (./foundations_of_ml.aux)
 \openout1 = `foundations_of_ml.aux'.
 
@@ -190,13 +194,13 @@ LaTeX Font Info:    ... okay on input line 17.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: landscape twoside 
-* h-part:(L,W,R)=(113.81102pt, 617.4248pt, 113.81102pt)
-* v-part:(T,H,B)=(56.9055pt, 483.69687pt, 56.9055pt)
-* \paperwidth=845.04684pt
-* \paperheight=597.50787pt
-* \textwidth=617.4248pt
-* \textheight=483.69687pt
+* modes: twoside 
+* h-part:(L,W,R)=(113.81102pt, 369.88583pt, 113.81102pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=369.88583pt
+* \textheight=731.23584pt
 * \oddsidemargin=41.54103pt
 * \evensidemargin=41.54103pt
 * \topmargin=-47.23828pt
@@ -204,7 +208,7 @@ LaTeX Font Info:    ... okay on input line 17.
 * \headsep=19.8738pt
 * \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=144.0pt
+* \marginparwidth=88.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.8pt plus 4.0pt minus 2.0pt
@@ -281,7 +285,7 @@ e
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
 Package pdftex.def Info: logo.jpg  used on input line 18.
-(pdftex.def)             Requested size: 185.22932pt x 185.23135pt.
+(pdftex.def)             Requested size: 184.94292pt x 184.94954pt.
 LaTeX Font Info:    Try loading font information for U+msa on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -303,153 +307,190 @@ LaTeX Warning: No positions in optional float specifier.
 Chapter 1.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 49.
+               Default added (so using `tbp') on input line 48.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--62
+Underfull \hbox (badness 10000) in paragraph at lines 47--61
+
+ []
+
+<model.png, id=15, 820.06375pt x 499.8675pt>
+File: model.png Graphic file (type png)
+<use model.png>
+Package pdftex.def Info: model.png  used on input line 68.
+(pdftex.def)             Requested size: 221.93321pt x 131.61761pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 [3
 
-]
-<model.png, id=20, 820.06375pt x 499.8675pt>
-File: model.png Graphic file (type png)
-<use model.png>
-Package pdftex.def Info: model.png  used on input line 69.
-(pdftex.def)             Requested size: 432.20416pt x 241.84813pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
+ <./model.png>]
+Overfull \hbox (32.86372pt too wide) in paragraph at lines 76--78
+\OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 ^^R$\OT1/cmr/m/n/12 s are pa-ram-e-ters
+ of the model and $\OML/cmm/m/it/12 ^^R[]$ \OT1/cmr/m/n/12 is re-ferred to as t
+he \OT1/cmr/bx/n/12 bias/intercept
  []
 
-[4 <./model.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
 
  []
 
 
-Underfull \vbox (badness 4569) has occurred while \output is active []
+Underfull \vbox (badness 1354) has occurred while \output is active []
 
- [5]
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 127--130
+ [4]
+Underfull \hbox (badness 10000) in paragraph at lines 126--129
 
  []
 
-[7]
+[5]
+Overfull \hbox (46.82927pt too wide) detected at line 143
+[]
+ []
 
-LaTeX Warning: Reference `fig:newton' on page 8 undefined on input line 169.
 
-<loss-landscape.png, id=39, 880.28876pt x 689.57625pt>
+LaTeX Warning: Reference `fig:newton' on page 6 undefined on input line 168.
+
+<loss-landscape.png, id=32, 880.28876pt x 689.57625pt>
 File: loss-landscape.png Graphic file (type png)
 <use loss-landscape.png>
-Package pdftex.def Info: loss-landscape.png  used on input line 173.
-(pdftex.def)             Requested size: 308.71013pt x 241.84984pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Package pdftex.def Info: loss-landscape.png  used on input line 172.
+(pdftex.def)             Requested size: 258.9173pt x 219.37468pt.
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
 
  []
 
-[8] [9 <./loss-landscape.png>] [10]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 212.
+
+Overfull \hbox (60.52904pt too wide) in paragraph at lines 192--197
+\OT1/cmr/m/n/12 We know that for a nor-mally dis-tibuted ran-dom vari-able, $\O
+ML/cmm/m/it/12 PDF \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 e[]$ 
+ []
+
+[7 <./loss-landscape.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 211.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 212.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 211.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--213
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
-<logistic-regression.png, id=52, 519.9425pt x 503.8825pt>
+[8]
+<logistic-regression.png, id=46, 519.9425pt x 503.8825pt>
 File: logistic-regression.png Graphic file (type png)
 <use logistic-regression.png>
-Package pdftex.def Info: logistic-regression.png  used on input line 221.
-(pdftex.def)             Requested size: 308.70717pt x 241.84547pt.
-[11]
-<sigmoid.png, id=56, 746.79pt x 474.77374pt>
+Package pdftex.def Info: logistic-regression.png  used on input line 220.
+(pdftex.def)             Requested size: 295.90979pt x 286.77007pt.
+<sigmoid.png, id=47, 746.79pt x 474.77374pt>
 File: sigmoid.png Graphic file (type png)
 <use sigmoid.png>
-Package pdftex.def Info: sigmoid.png  used on input line 231.
-(pdftex.def)             Requested size: 246.96614pt x 157.00906pt.
- [12 <./logistic-regression.png>] [13 <./sigmoid.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 275--280
+Package pdftex.def Info: sigmoid.png  used on input line 230.
+(pdftex.def)             Requested size: 258.91895pt x 164.60849pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
+[][]\OT1/cmr/m/n/10 https://towardsdatascience.com/logistic-regression-a-simpli
+fied-approach-using-
+ []
+
+[9 <./logistic-regression.png>] [10 <./sigmoid.png (PNG copy)>]
+Overfull \hbox (26.26947pt too wide) detected at line 270
+[]\OMS/cmsy/m/n/12 L\OT1/cmr/m/n/12 (^^B) = [] \OML/cmm/m/it/12 :g [] [] :[]\OT
+1/cmr/m/n/12 ^^B[]\OML/cmm/m/it/12 x
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--279
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--280
+Underfull \hbox (badness 10000) in paragraph at lines 274--279
 
  []
 
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 301--306
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 300--305
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--335
+Overfull \hbox (76.0862pt too wide) detected at line 330
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--334
 
  []
 
-[16]
-<bias_variance.png, id=79, 650.43pt x 252.945pt>
+<bias_variance.png, id=63, 650.43pt x 252.945pt>
 File: bias_variance.png Graphic file (type png)
 <use bias_variance.png>
-Package pdftex.def Info: bias_variance.png  used on input line 341.
-(pdftex.def)             Requested size: 617.4683pt x 241.8518pt.
+Package pdftex.def Info: bias_variance.png  used on input line 340.
+(pdftex.def)             Requested size: 369.89542pt x 190.12126pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--351
+Overfull \hbox (56.97064pt too wide) in paragraph at lines 345--345
+[][]\OT1/cmr/m/n/10 https://scipy-lectures.org/packages/scikit-learn/auto[]exam
+ples/plot[]bias[]variance.html#bias-
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 347--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--351
-
- []
-
-[17 <./bias_variance.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 380--384
+Underfull \hbox (badness 10000) in paragraph at lines 347--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--384
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+[13 <./bias_variance.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
 
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 435--438
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[20] (./foundations_of_ml.aux)
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 434--437
+
+ []
+
+[15] (./foundations_of_ml.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3494 strings out of 492615
- 47103 string characters out of 6131389
- 129679 words of memory out of 5000000
- 7325 multiletter control sequences out of 15000+600000
+ 3495 strings out of 492615
+ 47113 string characters out of 6131389
+ 130685 words of memory out of 5000000
+ 7326 multiletter control sequences out of 15000+600000
  17702 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,25p,724b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,25p,724b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -466,10 +507,10 @@ amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on foundations_of_ml.pdf (20 pages, 409440 bytes).
+Output written on foundations_of_ml.pdf (15 pages, 407856 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 132 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

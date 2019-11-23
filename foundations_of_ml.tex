@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage,landscape]{book}
+\documentclass[12pt,a4paper,titlepage,portrait]{book}
 \usepackage[left=4cm, right=4cm, top=2cm, bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 
 \author{\text{A lesson note by}~Sewade O. Ogun}
-\title{\includegraphics[width=0.3\linewidth]{logo} \\\textbf{Foundations of Machine Learning}
+\title{\includegraphics[width=0.5\linewidth]{logo} \\\textbf{Foundations of Machine Learning}
 }
 \date{\today, \text{AIMS Ghana}}
 
@@ -16,10 +16,9 @@
 
 \begin{document}
 	\maketitle
-	\begin{table}[]
-		
+	\begin{table}[]	
 		\begin{tabular}{ll}
-			\title \textbf{{Symbols and Notations}} \\
+			\title \textbf{{Symbols and Notations}} \\\\
 			$\theta_i$  & Parameter i \\
 			$\Theta$ & Set of Parameters         \\
 			$n$ & Number of examples        \\
@@ -66,7 +65,7 @@
 		\item[d.] Learning Algorithm
 	\end{enumerate}
 \begin{center}
-	\includegraphics[width=0.7\linewidth, height=0.5\textheight]{model}
+	\includegraphics[width=0.6\linewidth, height=0.18\textheight]{model}
 \end{center}
 	
 	\subsection{Hypothesis}
@@ -170,7 +169,7 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.5\linewidth, height=0.5\textheight]{loss-landscape}
+		\includegraphics[width=0.7\linewidth, height=0.3\textheight]{loss-landscape}
 		\caption{Newton Method showing theta update}
 		\label{fig:loss-landscape}
 	\end{figure}
@@ -218,7 +217,7 @@
 
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.5\linewidth, height=0.5\textheight]{logistic-regression}
+		\includegraphics[width=0.8\linewidth ]{logistic-regression}
 		
 		\caption[]{Diagram Showing Hyperplane separating the two classes\protect\footnotemark}
 		\label{fig:logistic-regression}
@@ -228,7 +227,7 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.4\linewidth]{sigmoid}
+		\includegraphics[width=0.7\linewidth]{sigmoid}
 		\caption[Sigmoid]{Sigmoid Function\protect\footnotemark}
 		\label{fig:sigmoid}
 	\end{figure}
@@ -338,7 +337,7 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=\linewidth, height=0.5\textheight]{bias_variance}
+		\includegraphics[width=\linewidth, height=0.26\textheight]{bias_variance}
 		\caption[]{Diagram Showing Overfitting, Normal and Underfitting\protect\footnotemark}
 		\label{fig:biasvariance}
 	\end{figure}
