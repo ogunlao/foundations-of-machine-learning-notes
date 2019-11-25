@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage,portrait]{book}
+\documentclass[12pt,a4paper,titlepage,portrait,openany]{book}
 \usepackage[left=4cm, right=4cm, top=2cm, bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -12,10 +12,9 @@
 }
 \date{\today, \text{AIMS Ghana}}
 
-
-
 \begin{document}
 	\maketitle
+	\tableofcontents
 	\begin{table}[]	
 		\begin{tabular}{ll}
 			\title \textbf{{Symbols and Notations}} \\\\
@@ -165,7 +164,7 @@
 	
 	\subsubsection{Newton's Method}
 	The newton's method is a second-order optimization algorithm.
-	Consider the diagram \ref{fig:newton} below,  
+	Consider the diagram \ref{fig:loss-landscape} below,  
 	
 	\begin{figure}
 		\centering
@@ -179,7 +178,7 @@
 	$$g = f^,$$ $$g^, = f^{,,}$$
 	$$\Theta := \Theta - \dfrac{g}{g_i}$$
 	$$\Theta := \Theta - \dfrac{f^,(\theta)}{f^,,(\theta)}$$
-	In vecorized form, $\Theta := \Theta - H^{-1}\nabla_\theta\mathcal{L}$ where $H_{ij} = \dfrac{\partial}{\partial_{\theta_i}\theta_j}\mathcal{L}(\Theta)$. $H_{ij}$ is the second partial derivative $wrt$ all the $\Theta$s and is called Hessian matrix. If $x \in \mathbb{R}^{(n, d)}$, the $H \in \mathbb{R}^{(d, d)} $ \\
+	In vecorized form, $\Theta := \Theta - H^{-1}\nabla_\theta\mathcal{L}$ where $H_{ij} = \dfrac{\partial}{\partial_{\theta_i}\theta_j}\mathcal{L}(\Theta)$. $H_{ij}$ is the second partial derivative $wrt$ all the $\Theta$s and is called \textbf{Hessian matrix}. If $x \in \mathbb{R}^{(n, d)}$, the $H \in \mathbb{R}^{(d, d)} $ \\
 	
 	\begin{enumerate}
 		\item Newton's method is faster than stochastic gradient descent and converges in polynolial time.
@@ -192,7 +191,7 @@
 	Maximum Likelihood estimation is a way of estimating the best parameters of a model given the data by maximizing the probability of the data.\\
 	Given that $y_i = \Theta^Tx^i + \varepsilon_i$
 	where $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$; the features are assumed to be centered with $\mu = 0$ and $\varepsilon_i$ is the difference between predictions and target which is a random variable and is Independently and Identically Distributed (IID). \\
-	We know that for a normally distibuted random variable, $PDF = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(x_i-\mu)^2}{2\sigma^2}}$ \\
+	We know that for a normally distibuted random variable, $$PDF = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(x_i-\mu)^2}{2\sigma^2}}$$ \\
 	Since $\varepsilon_i$ is assumed to be normally distributed, 
 	$$P(\varepsilon_i) = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{\varepsilon_i^2}{2\sigma^2}}$$
 	$$P(\varepsilon_i) = \dfrac{1}{\sqrt[2]{2\pi\sigma^2}}e^{-\dfrac{(y_i - h_\theta(x_i))^2}{2\sigma^2}}$$
@@ -233,7 +232,7 @@
 	\end{figure}
 	\footnotetext{https://towardsdatascience.com/logistic-regression-a-simplified-approach-using-python-c4bc81a87c31}
 	
-	\subsubsection{Criteria}
+	\subsection{Criteria}
 	$$P(y = 1 | x;\Theta) = h_\theta(x)$$
 	$$P(y = 1 | x;\Theta) = 1 - h_\theta(x)$$
 	In compact form,
@@ -255,7 +254,7 @@
 	
 	\eqref{cross-entropy-loss} is known as the cross-entropy loss function. $\mathcal{L}(\Theta)$ is the log-likelihood and $L(\Theta)$ is the loss.
 	
-	\subsubsection{Learning Algorithm}
+	\subsection{Learning Algorithm}
 	Recall that $\Theta := \Theta + \alpha\nabla_\theta\mathcal{L}(\Theta)$ and $h_\theta(x) = g(\Theta^T\boldsymbol{x}) = \dfrac{1}{1+e^{-\Theta^T\boldsymbol{x}}}$
 	
 	$$
@@ -321,7 +320,7 @@
 		&= \mathbb{E}(x^2) + \mu^2 \\
 		&= \mathbb{E}(x^2)-[\mathbb{E}(x)]^2 \\\\
 		\text{Plugging in Var}(x);
-		R_{h_\theta} &= Var(\varepsilon) + [\mathbb{E}(\varepsilon)]^2 + 2\mathbb{E}(\varepsilon)\mathbb{E}(b) + Var(b) + [\mathbb{E}(b)]^2 but \mathbb{E} = 0 \\
+		R_{h_\theta} &= Var(\varepsilon) + [\mathbb{E}(\varepsilon)]^2 + 2\mathbb{E}(\varepsilon)\mathbb{E}(b) + Var(b) + [\mathbb{E}(b)]^2~\text{but}~\mathbb{E} = 0 \\
 		&= Var(\varepsilon) + Var(b) + [\mathbb{E}(b)]^2 \\
 		&= \sigma^2 + Var(b) + [\mathbb{E}(b)]^2 \\
 		&= \sigma^2 + Var(h_{\theta^*}(x) - h_\theta{x}) + [\mathbb{E}(h_{\theta^*}(x) - h_\theta(x))]^2
@@ -332,7 +331,7 @@
 	$[\mathbb{E}(h_{\theta^*}(x) - h_\theta(x))]^2$ and variance $Var[h_{\theta^*}(x) - h_\theta{x}]$ of the model. The noise $\sigma^2$ is derived from the data and not under the model's control, and is also the minimum loss value our model can have. It is also a requirement to have low values for both variance and bias. \\\\
 	Reducing the variance when training the model increases the bias of the model and vice-versa. The solution is to find a model with the right complexity which reduces the variance and bias simultaneously. This phenomenon is called the \textbf{Bias-Variance Tradeoff}.
 	
-	\subsubsection{Bias and Variance}
+	\subsection{Bias and Variance}
 	A model is said to be overfitting  if it has a high variance and is seen where the training set loss is low while the validation set loss is high. A model is said to be underfitting if training set loss is high and validation set loss is also high.
 	
 	\begin{figure}
@@ -350,7 +349,7 @@
 	
 	To cater for the effect of data splitting, \textbf{cross-validation} method is used to choose the best model.
 	
-	\subsubsection{K-Fold Cross Validation}
+	\subsection{K-Fold Cross Validation}
 	Given the set of data $D = \left\{(x_i, y_i)\right\}_{i=1}^m$ and the criteria such as $L(\theta) = \dfrac{1}{2}\sum_{i=1}^{n}\left(h_\theta(x_i) - y_i\right)^2$ for linear regression;
 	\begin{enumerate}
 		\item Randomly split $D$ into k disjoint subsets of size $\frac{m}{k}$
@@ -364,7 +363,7 @@
 		\item Put all the data together i.e retrain $D$ using the best model.
 	\end{enumerate}
 
-	An extreme case of the K-Fold cross validation where all the data are split into n folds is called \textbf{Leave-One-Out Cross Validation}. In this case, only one example is used for validation at each instance and can be used when the number of examples, n is not large.\\
+	An extreme case of the K-Fold cross validation where all the data are split into n folds is called \textbf{Leave-One-Out Cross Validation}. In this case, only one example is used for validation at each instance and can be used when the number of examples, n is not large.
 	
 	\subsubsection{Hints}
 	\begin{enumerate}
@@ -378,8 +377,7 @@
 	\subsubsection{Feature Selection}
 	Feature selection is done to (1) reduce the model complexity (2) determine the features that are most predictive (3) reduce the number of features, preventing overfitting. \\
 	For d features, the number of feature subsets = $2^d$.
-	There are two feature selection methods, namely (1) Wrapper Methods (2) Filter Methods. \\
-	\\
+	There are two feature selection methods, namely (1) Wrapper Methods (2) Filter Methods.
 	\subsubsection{Feature Selection with Wrapper Methods}
 	\begin{enumerate}
 		\item[a.] \textbf{Forward Search}
@@ -424,7 +422,7 @@
 	$$MI(x^{(i)},y) = KL\left(P\left(x^{(i)}\right) || P\left(x^{(i)}P(y)\right)\right)$$
 	where $MI$ is the mutual information, $KL$ is Kulback-Leibler Divergence (which is also known as relative entropy).
 	
-	$$\text{KL Distance,}~D_{KL}(X||y) = \sum_{i=1}^{n}[P(x_i)*log\dfrac{x_i)}{y_i}]$$
+	$$\text{KL Distance,}~D_{KL}(X||y) = \sum_{i=1}^{n}\left[P(x_i)*log\dfrac{x_i}{y_i}\right]$$
 	
 	\textbf{Algorithm}
 	\begin{enumerate}

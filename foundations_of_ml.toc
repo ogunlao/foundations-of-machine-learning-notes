@@ -1,0 +1,29 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Supervised Learning}{4}% 
+\contentsline {section}{\numberline {1.1}Regression Problem}{4}% 
+\contentsline {subsection}{\numberline {1.1.1}Hypothesis}{5}% 
+\contentsline {subsection}{\numberline {1.1.2}Criteria}{5}% 
+\contentsline {subsection}{\numberline {1.1.3}Learning Algorithm}{5}% 
+\contentsline {subsubsection}{Numerical Approach}{5}% 
+\contentsline {subsubsection}{Computing the Gradient of Loss Function}{6}% 
+\contentsline {subsubsection}{Batch Gradient Descent}{6}% 
+\contentsline {subsubsection}{Stochastic Gradient Descent}{6}% 
+\contentsline {subsubsection}{Mini-batch Stochastic Gradient Descent}{6}% 
+\contentsline {subsubsection}{Analytical Method}{7}% 
+\contentsline {subsubsection}{Newton's Method}{8}% 
+\contentsline {subsection}{\numberline {1.1.4}Maximum Likelihood Estimation}{9}% 
+\contentsline {section}{\numberline {1.2}Classification Problem}{10}% 
+\contentsline {subsection}{\numberline {1.2.1}Hypothesis}{10}% 
+\contentsline {subsubsection}{Logistic Regression}{10}% 
+\contentsline {subsection}{\numberline {1.2.2}Criteria}{11}% 
+\contentsline {subsection}{\numberline {1.2.3}Learning Algorithm}{12}% 
+\contentsline {subsubsection}{Computing the Gradient}{12}% 
+\contentsline {subsubsection}{Derivative of the sigmoid function}{12}% 
+\contentsline {section}{\numberline {1.3}Risk Minimization}{13}% 
+\contentsline {subsection}{\numberline {1.3.1}Bias and Variance}{14}% 
+\contentsline {subsection}{\numberline {1.3.2}K-Fold Cross Validation}{14}% 
+\contentsline {subsubsection}{Hints}{15}% 
+\contentsline {subsection}{\numberline {1.3.3}Reducing the Model Complexity}{15}% 
+\contentsline {subsubsection}{Feature Selection}{15}% 
+\contentsline {subsubsection}{Feature Selection with Wrapper Methods}{15}% 
+\contentsline {subsubsection}{Feature Selection with Filter Methods}{16}% 
